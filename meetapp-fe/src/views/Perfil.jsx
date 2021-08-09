@@ -1,9 +1,11 @@
 import React from "react";
-
+import { useAuth0 } from "@auth0/auth0-react";
 const Perfil = () => {
+  const { user } = useAuth0();
+  const { given_name,family_name, picture, email } = user;
   return (
     <div className="container">
-      <h3 className="text-dark text-center mb-4 mt-2">Perfil Negocio</h3>
+      <h3 className="text-dark text-center mb-4 mt-2">Perfil de {given_name}</h3>
 
       <div className="row">
         <div className="col-lg-4">
@@ -16,9 +18,10 @@ const Perfil = () => {
             <div className="card-body text-center shadow">
               <img
                 className="rounded-circle mb-3 mt-4"
-                src="blob:file:///ff923141-6f3d-4fe7-8930-6f9e0b3f5c95"
+                src={picture}
                 width={160}
-                height={160}
+                height={162}
+                alt="foto"
               />
               <div className="mb-3">
                 <button className="btn btn-primary btn-sm" type="button">
@@ -41,29 +44,29 @@ const Perfil = () => {
                 <div className="form-row mb-3">
                   <div className="col">
                     <div className="form-group">
-                      <label htmlFor="username">
+                      <label htmlFor="given_name">
                         <strong>Nombre*</strong>
                       </label>
                       <input
                         className="form-control"
                         type="text"
-                        id="username"
-                        placeholder="José"
-                        name="username"
+                        id="given_name"
+                        placeholder={given_name}
+                        name="given_name"
                       />
                     </div>
                   </div>
                   <div className="col">
                     <div className="form-group">
-                      <label htmlFor="last_name">
+                      <label htmlFor="family_name">
                         <strong>Apellido*</strong>
                       </label>
                       <input
                         className="form-control"
                         type="text"
-                        id="last_name"
-                        placeholder="Gomez"
-                        name="last_name"
+                        id="family_name"
+                        placeholder={family_name}
+                        name="family_name"
                       />
                     </div>
                   </div>
@@ -78,7 +81,7 @@ const Perfil = () => {
                         className="form-control"
                         type="email"
                         aria-describedby="emailHelp"
-                        placeholder="usuario@ejemplo.com"
+                        placeholder={email}
                         name="mail"
                       />
                     </div>

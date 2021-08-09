@@ -1,0 +1,36 @@
+import React from 'react'
+import {Switch, Route} from 'react-router-dom'
+import ProtectedRoute from "../auth/ProtectedRoute.jsx";
+
+//views
+import Home from '../views/Home';
+import Inicio from '../views/Inicio';
+import Perfil from '../views/Perfil';
+import Reservar from '../views/reservar/Reservar';
+import NotFound from '../views/NotFound';
+
+const Routes = () => {
+    return (
+      <Switch>
+        <ProtectedRoute
+          exact
+          path="/inicio"
+          component={Inicio}
+        ></ProtectedRoute>
+        <ProtectedRoute
+          exact
+          path="/perfil"
+          component={Perfil}
+        ></ProtectedRoute>
+        <ProtectedRoute
+          exact
+          path="/reservar"
+          component={Reservar}
+        ></ProtectedRoute>
+        <Route path="/" component={Home}></Route>
+        <Route path="*" component={NotFound}></Route>
+      </Switch>
+    );
+}
+
+export default Routes;

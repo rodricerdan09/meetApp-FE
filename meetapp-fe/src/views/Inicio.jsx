@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Inicio = () => {
   return (
     <div className="container-fluid">
@@ -57,23 +57,16 @@ const Inicio = () => {
                   <th>Fecha</th>
                   <th>Hora</th>
                   <th>Estado</th>
-                  <th>Pre-test</th>
-                  <th>Post-test</th>
+                  <th>Auto-test</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
-                    <img
-                      className="rounded-circle mr-2"
-                      width="30"
-                      height="30"
-                      src="locales/sanjose.png"
-                    />
                     San José
                   </td>
                   <td>
-                    29-06-2021
+                    11-09-2021
                     <br />
                   </td>
                   <td>22:00</td>
@@ -83,23 +76,12 @@ const Inicio = () => {
                       Completar
                     </button>
                   </td>
-                  <td>
-                    <button className="btn btn-primary disabled" type="button">
-                      Completar
-                    </button>
-                  </td>
                 </tr>
                 <tr>
                   <td>
-                    <img
-                      className="rounded-circle mr-2"
-                      width="30"
-                      height="30"
-                      src="locales/mirasoles.png"
-                    />
                     Mirasoles
                   </td>
-                  <td>26-06-2021</td>
+                  <td>26-09-2021</td>
                   <td>20:30</td>
                   <td>Pendiente</td>
                   <td>
@@ -108,15 +90,8 @@ const Inicio = () => {
                     </button>
                     <br />
                   </td>
-                  <td>
-                    <button className="btn btn-primary disabled" type="button">
-                      Completar
-                    </button>
-                  </td>
                 </tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
+              
               </tbody>
               <tfoot>
                 <tr></tr>
@@ -131,26 +106,26 @@ const Inicio = () => {
                 role="status"
                 aria-live="polite"
               >
-                Mostrando 2 de 2<br />
+                Mostrando 1 de 1<br />
               </p>
             </div>
             <div className="col-md-6">
               <nav className="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                 <ul className="pagination">
                   <li className="page-item disabled">
-                    <a className="page-link" href="#" aria-label="Previous">
+                    <Link className="page-link" to="/inicio" aria-label="Previous">
                       <span aria-hidden="true">«</span>
-                    </a>
+                    </Link>
                   </li>
                   <li className="page-item active">
-                    <a className="page-link" href="#">
+                    <Link className="page-link" to="/inicio">
                       1
-                    </a>
+                    </Link>
                   </li>
                   <li className="page-item">
-                    <a className="page-link" href="#" aria-label="Next">
+                    <Link className="page-link" to="/inicio" aria-label="Next">
                       <span aria-hidden="true">»</span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>

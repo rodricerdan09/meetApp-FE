@@ -1,3 +1,5 @@
+
+//MODULES
 import React from 'react';  
 import './App.css';  
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -6,22 +8,18 @@ import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import { useState } from 'react';
 import {useAuth0} from '@auth0/auth0-react';
 
-// import layout
-import Leftside from './Layout/Leftside';  
-import Header from './Layout/Header'  
-import Footer from './Layout/Footer'
-import ScrollToTop from './Layout/ScrollToTop';
+//layout
+import Leftside from './layout/Leftside';  
+import Header from './layout/Header'  
+import Footer from './layout/Footer'
+import ScrollToTop from './layout/ScrollToTop';
+import Loading from './layout/Loading';
 
-//import components
-import Inicio from './Components/Inicio';
-import Perfil from './Components/Perfil';
-import Reservar from './Components/Reservar';
-import NotFound from './Components/NotFound';
+//ROUTES
+import Routes from './routes/Routes.jsx';
 
-//import Login from "./Login";  
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 function App() { 
-  const { isAuthenticated, isLoading } = useAuth0(); 
+  const {isLoading} = useAuth0(); 
 
   const [toggled, setToggled] = useState("");
   const [isToggled, setIsToggled] = useState(false);
@@ -36,48 +34,24 @@ function App() {
   } 
   if (isLoading) {
     return( 
-      <div class="text-center">
-        <div className="spinner-border text-primary" role="status">
-         
-        </div>
-        <strong>Cargando página...</strong>
-      </div>
+      <Loading/>
     )
   }
- 
   return (  
     <div className="App">  
-      <Router >
-        <div id="wrapper">  
-          <Leftside toggled={toggled} slidebarToggled={slidebarToggled}/>  
-          <div id="content-wrapper" className="d-flex flex-column">  
-            <div id="content">  
-              <Header slidebarToggled={slidebarToggled} />  
-              <Switch>
-                <Route 
-                  exact path='/' 
-                  component={Inicio}>
-                </Route> 
-                <Route 
-                  exact path='/perfil' 
-                  component={Perfil}>
-                </Route>
-                <Route 
-                  exact path='/reservar' 
-                  component={Reservar}>
-                </Route>
-                <Route
-                  path="*" 
-                  component={NotFound}>
-                </Route> 
-                   
-              </Switch> 
-            </div>  
-            <Footer /> 
-          </div>
-           
-        </div>  
-      </Router> 
+      
+      <div id="wrapper">  
+        <Leftside toggled={toggled} slidebarToggled={slidebarToggled}/>  
+        <div id="content-wrapper" className="d-flex flex-column">  
+          <div id="content">  
+            <Header slidebarToggled={slidebarToggled} />  
+            <Routes/>
+          </div>  
+          <Footer /> 
+        </div>
+          
+      </div>  
+    
       <ScrollToTop/> 
     </div> 
   );  
