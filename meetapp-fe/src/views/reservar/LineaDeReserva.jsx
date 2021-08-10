@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado}) => {
     
@@ -36,13 +37,13 @@ const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado}) => {
                 </div>
             </td>
             <td>
-                <button
+                <Link
                 className="btn btn-primary"
-                type="button"
                 style={{background: 'rgb(78, 115, 223)'}}
+                to='/reservar/mesas'
                 >
                 Reservar
-                </button>
+                </Link>
             </td>
         </tr>
 

@@ -87,13 +87,15 @@ const Reservar = () => {
                 </tr>
               </thead>
               <tbody>
-                { locales.map(local =>
+                { locales
+                  .map(local =>
                     <LineaDeReserva 
                       local={local.local} 
                       tipo={local.tipo} 
                       direccion={local.direccion} 
                       porcentajeOcupado={local.porcentajeOcupado} 
-                    />)
+                    />
+                  )
                 } 
               </tbody>
               <tfoot>

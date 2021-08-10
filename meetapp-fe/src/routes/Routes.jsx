@@ -8,6 +8,7 @@ import Inicio from '../views/Inicio';
 import Perfil from '../views/Perfil';
 import Reservar from '../views/reservar/Reservar';
 import NotFound from '../views/NotFound';
+import Mesas from '../views/reservar/Mesas.jsx';
 
 const Routes = () => {
     return (
@@ -21,6 +22,11 @@ const Routes = () => {
           exact
           path="/perfil"
           component={Perfil}
+        ></ProtectedRoute>
+        <ProtectedRoute
+          exact
+          path="/reservar/mesas"
+          component={Mesas}
         ></ProtectedRoute>
         <ProtectedRoute
           exact
