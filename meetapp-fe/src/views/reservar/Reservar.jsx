@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import LineaDeReserva from "./LineaDeReserva.jsx";
 import { Link } from "react-router-dom";
 const Reservar = () => {
+  const arrayDeLocales=[
+    {"local":"El Surtidor", "tipo":"Restobar", "direccion":"French 1010", "porcentajeOcupado":31},
+    {"local":"Pedro's", "tipo":"Restobar", "direccion":"French 414", "porcentajeOcupado":100},
+    {"local":"Mirasoles", "tipo":"Cafetería y Pastelería", "direccion":"Av. Las Heras 720", "porcentajeOcupado":51}
+  ]
+  const [locales, setLocales] = useState(arrayDeLocales);
+  console.log(locales[0])
+
   return (
     <div className="container-fluid">
       <h3 className="text-dark mb-4">
@@ -79,9 +87,14 @@ const Reservar = () => {
                 </tr>
               </thead>
               <tbody>
-                <LineaDeReserva local={"El Surtidor"} tipo={"Restobar"} direccion={"French y Don Bosco"} porcentajeOcupado={51} /> 
-                <LineaDeReserva local={"Pedros's"} tipo={"Restobar"} direccion={"French 414"} porcentajeOcupado={91} /> 
-                
+                { locales.map(local =>
+                    <LineaDeReserva 
+                      local={local.local} 
+                      tipo={local.tipo} 
+                      direccion={local.direccion} 
+                      porcentajeOcupado={local.porcentajeOcupado} 
+                    />)
+                } 
               </tbody>
               <tfoot>
                 <tr>
