@@ -79,8 +79,8 @@ const Reservar = () => {
                 </tr>
               </thead>
               <tbody>
-                <LineaDeReserva porcentajeOcupado={51} /> 
-                <LineaDeReserva porcentajeOcupado={51} /> 
+                <LineaDeReserva local={"El Surtidor"} tipo={"Restobar"} direccion={"French y Don Bosco"} porcentajeOcupado={51} /> 
+                <LineaDeReserva local={"Pedros's"} tipo={"Restobar"} direccion={"French 414"} porcentajeOcupado={91} /> 
                 
               </tbody>
               <tfoot>

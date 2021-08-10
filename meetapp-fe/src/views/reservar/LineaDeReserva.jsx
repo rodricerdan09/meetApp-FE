@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LineaDeReserva = ({porcentajeOcupado}) => {
+const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado}) => {
     
     let classColorBar="";
     porcentajeOcupado >=90 ? (classColorBar="progress-bar bg-danger") : porcentajeOcupado >=50 ? (classColorBar="progress-bar bg-warning"):(classColorBar="progress-bar bg-success") 
@@ -13,11 +13,11 @@ const LineaDeReserva = ({porcentajeOcupado}) => {
                         height={30}
                         src="locales/surtidor.png"
                     /> */}
-                El Surtidor
+                {local}
             </td>
-            <td>Restobar</td>
+            <td>{tipo}</td>
             <td>
-                French y Don Bosco
+                {direccion}
                 <br />
             </td>
             <td>
