@@ -21,15 +21,15 @@ const Leftside = ({toggled, slidebarToggled}) => {
         <ul className="navbar-nav text-light" id="accordionSidebar">
           <hr class="sidebar-divider d-none d-md-block"></hr>
           <li className="nav-item">
-            <Link className="nav-link" to="/inicio">
+            <Link className="nav-link" to="/mis-reservas">
               <i className="fa fa-home" />
-              <span>Inicio</span>
+              <span>Mis Reservas</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/reservar">
               <i className="fa fa-calendar-check" />
-              <span>Reservar</span>
+              <span>Hacer una Reserva</span>
             </Link>
           </li>
           <li className="nav-item">

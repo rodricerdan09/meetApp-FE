@@ -4,7 +4,7 @@ import ProtectedRoute from "../auth/ProtectedRoute.jsx";
 
 //views
 import Home from '../views/Home';
-import Inicio from '../views/Inicio';
+import MisReservas from '../views/MisReservas';
 import Perfil from '../views/Perfil';
 import Reservar from '../views/reservar/Reservar';
 import NotFound from '../views/NotFound';
@@ -15,8 +15,8 @@ const Routes = () => {
       <Switch>
         <ProtectedRoute
           exact
-          path="/inicio"
-          component={Inicio}
+          path="/mis-reservas"
+          component={MisReservas}
         ></ProtectedRoute>
         <ProtectedRoute
           exact

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Inicio = () => {
+const MisReservas = () => {
   return (
     <div className="container-fluid">
       <h3 className="text-dark mb-4">
@@ -113,17 +113,17 @@ const Inicio = () => {
               <nav className="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                 <ul className="pagination">
                   <li className="page-item disabled">
-                    <Link className="page-link" to="/inicio" aria-label="Previous">
+                    <Link className="page-link" to="/mis-reservas" aria-label="Previous">
                       <span aria-hidden="true">«</span>
                     </Link>
                   </li>
                   <li className="page-item active">
-                    <Link className="page-link" to="/inicio">
+                    <Link className="page-link" to="/mis-reservas">
                       1
                     </Link>
                   </li>
                   <li className="page-item">
-                    <Link className="page-link" to="/inicio" aria-label="Next">
+                    <Link className="page-link" to="/mis-reservas" aria-label="Next">
                       <span aria-hidden="true">»</span>
                     </Link>
                   </li>
@@ -137,4 +137,4 @@ const Inicio = () => {
   );
 };
 
-export default Inicio;
+export default MisReservas;

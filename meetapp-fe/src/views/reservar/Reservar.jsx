@@ -10,10 +10,11 @@ const Reservar = () => {
   const [locales, setLocales] = useState(arrayDeLocales);
   console.log(locales[0])
 
+
   return (
     <div className="container-fluid">
       <h3 className="text-dark mb-4">
-        <strong>Reservar</strong>
+        <strong>Hacer Una Nueva Reserva</strong>
       </h3>
       <div className="card">
         <div className="card-body">
@@ -83,7 +84,7 @@ const Reservar = () => {
                   <th>Local</th>
                   <th>Tipo</th>
                   <th>Dirección</th>
-                  <th>Ocupación</th>
+                  <th>Capacidad Ocupada</th>
                 </tr>
               </thead>
               <tbody>
