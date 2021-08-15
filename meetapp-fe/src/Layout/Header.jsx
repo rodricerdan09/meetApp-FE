@@ -31,10 +31,10 @@ const Header = ({ slidebarToggled }) => {
             <Link
               className="nav-link dropdown-toggle"
               id="userDropdown"
-              role="button"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
+              to={" "} 
             >
               <span className="mr-2 d-none d-lg-inline text-gray-600 small">
                 {name}

@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado}) => {
+const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado, key }) => {
     
     let classColorBar="";
     porcentajeOcupado >=90 ? (classColorBar="progress-bar bg-danger") : porcentajeOcupado >=50 ? (classColorBar="progress-bar bg-warning"):(classColorBar="progress-bar bg-success") 
     return (
-        <tr>
+        <tr key={key}>
             <td>
                 {/* <img
                         className="rounded-circle mr-2"
@@ -37,13 +37,13 @@ const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado}) => {
                 </div>
             </td>
             <td>
-                <Link
+                <NavLink
                 className="btn btn-primary"
                 style={{background: 'rgb(78, 115, 223)'}}
                 to='/reservar/mesas'
                 >
                 Reservar
-                </Link>
+                </NavLink>
             </td>
         </tr>
 

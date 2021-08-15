@@ -32,11 +32,11 @@ const ScrollToTop = () => {
     :
     (
     <button
-      class="btn btn-primary  btn-sm"
+      className="btn btn-primary  btn-sm"
       style={style}
       onClick={click}
     >
-      <i class="fas fa-angle-up" />
+      <i className="fas fa-angle-up" />
     </button>
     )
   

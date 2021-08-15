@@ -19,7 +19,7 @@ const Leftside = ({toggled, slidebarToggled}) => {
         </Link>
         <hr className="sidebar-divider my-0" />
         <ul className="navbar-nav text-light" id="accordionSidebar">
-          <hr class="sidebar-divider d-none d-md-block"></hr>
+          <hr className="sidebar-divider d-none d-md-block"></hr>
           <li className="nav-item">
             <Link className="nav-link" to="/mis-reservas">
               <i className="fa fa-home" />
@@ -38,7 +38,7 @@ const Leftside = ({toggled, slidebarToggled}) => {
               <span>Mi Perfil</span>
             </Link>
           </li>
-          <hr class="sidebar-divider d-none d-md-block"></hr>
+          <hr className="sidebar-divider d-none d-md-block"></hr>
         </ul>
         <div className="text-center d-none d-md-inline">
           <button  

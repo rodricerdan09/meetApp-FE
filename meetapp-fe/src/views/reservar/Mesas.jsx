@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Mesas = () => {
     return (
-      <div class="container-fluid">
-        <h3 class="text-dark mb-4">Reserva de Mesas</h3>
+      <div className="container-fluid">
+        <h3 className="text-dark mb-4">Reserva de Mesas</h3>
 
         <div className="card-body">
           <div className="row">
@@ -34,9 +34,9 @@ const Mesas = () => {
           </div>
         </div>
 
-        <div class="card shadow">
-          <div class="card-header py-3">
-            <p class="text-primary m-0 font-weight-bold">
+        <div className="card shadow">
+          <div className="card-header py-3">
+            <p className="text-primary m-0 font-weight-bold">
               Seleccione las mesas a reservar:
             </p>
           </div>
@@ -47,7 +47,7 @@ const Mesas = () => {
               role="grid"
               aria-describedby="dataTable_info"
             >
-              <table class="table my-0" id="dataTable">
+              <table className="table my-0" id="dataTable">
                 <thead>
                   <tr></tr>
                 </thead>

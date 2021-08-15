@@ -17,13 +17,13 @@ const MisReservas = () => {
               >
                 <label>
                   Mostrar 
-                  <select className="form-control form-control-sm custom-select custom-select-sm">
-                    <option value="10" selected>
+                  <select className="form-control form-control-sm custom-select custom-select-sm" defaultValue={10} >
+                    <option value="10">
                       10
                     </option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
+                    <option value={25}>25</option>
+                    <option value={50}>50</option>
+                    <option value={100}>100</option>
                   </select>
                 </label>
               </div>
@@ -94,7 +94,14 @@ const MisReservas = () => {
               
               </tbody>
               <tfoot>
-                <tr></tr>
+              <tr>
+                  <td />
+                  <td />
+                  <td />
+                  <td />
+                  <td />
+                  <td />
+                </tr>
               </tfoot>
             </table>
           </div>

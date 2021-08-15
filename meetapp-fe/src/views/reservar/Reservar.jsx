@@ -1,15 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import LineaDeReserva from "./LineaDeReserva.jsx";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 const Reservar = () => {
-  const arrayDeLocales=[
+  /* const arrayDeLocales=[
     {"local":"El Surtidor", "tipo":"Restobar", "direccion":"French 1010", "porcentajeOcupado":31},
     {"local":"Pedro's", "tipo":"Restobar", "direccion":"French 414", "porcentajeOcupado":100},
     {"local":"Mirasoles", "tipo":"Cafetería y Pastelería", "direccion":"Av. Las Heras 720", "porcentajeOcupado":51}
   ]
   const [locales, setLocales] = useState(arrayDeLocales);
-  console.log(locales[0])
-
+  console.log(locales[0]) */
+  const [search, setSearch] = useState("");
+  const [locales, setLocales] = useState( 
+    {
+      locales: [], 
+      status: false
+    })
+  const cargarLocales = () => {
+      var url = "http://localhost:5000/api/locales/";
+      axios.get(url).then(res => {
+          setLocales({
+            locales: res.data,
+            status: true
+          });
+      });
+  }
+  useEffect (() => {
+    cargarLocales();
+  }, []);
+  
+  const localesFiltrados = locales.locales.filter((local) =>
+  local.nombre.toLowerCase().includes(search.toLowerCase())|
+  local.tipo.toLowerCase().includes(search.toLowerCase())|
+  local.direccion.toLowerCase().includes(search.toLowerCase())
+);
 
   return (
     <div className="container-fluid">
@@ -45,8 +69,8 @@ const Reservar = () => {
               >
                 <label>
                   Mostrar&nbsp;
-                  <select className="form-control form-control-sm custom-select custom-select-sm">
-                    <option value={10} selected>
+                  <select className="form-control form-control-sm custom-select custom-select-sm" defaultValue={10}>
+                    <option value={10}>
                       10
                     </option>
                     <option value={25}>25</option>
@@ -67,6 +91,8 @@ const Reservar = () => {
                     className="form-control form-control-sm"
                     aria-controls="dataTable"
                     placeholder="Buscar local"
+                    autoFocus
+                    onChange={(e) => setSearch(e.target.value)}
                   />
                 </label>
               </div>
@@ -88,13 +114,16 @@ const Reservar = () => {
                 </tr>
               </thead>
               <tbody>
-                { locales
+                {locales.status 
+                  && 
+                  localesFiltrados
                   .map(local =>
                     <LineaDeReserva 
-                      local={local.local} 
+                      key={local.id}
+                      local={local.nombre} 
                       tipo={local.tipo} 
                       direccion={local.direccion} 
-                      porcentajeOcupado={local.porcentajeOcupado} 
+                      porcentajeOcupado={local.aforo} 
                     />
                   )
                 } 
@@ -137,7 +166,7 @@ const Reservar = () => {
                   
                   </li>
                   <li className="page-item disabled">
-                    <Link className="page-link"  aria-label="Next">
+                    <Link className="page-link" to="/reservar" aria-label="Next">
                       <span aria-hidden="true">»</span>
                     </Link>
                   </li>

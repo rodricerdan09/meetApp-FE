@@ -11,7 +11,7 @@ const Home = () => {
                     </div>
                     
                     <p className="lead font-weight-normal">MeetApp te permite reservar tu espacio en bares y restaurantes preferidos para compartir con las persomas que prefieras </p>
-                    <Link className="btn btn-outline-secondary" to="/inicio">Comenzar a usar MeetApp</Link>
+                    <Link className="btn btn-outline-secondary" to="/mis-reservas">Comenzar a usar MeetApp</Link>
                 </div>
             </div>
         </div>
