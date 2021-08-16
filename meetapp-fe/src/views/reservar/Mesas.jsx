@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Mesa from './Mesa';
 
 const Mesas = () => {
     return (
@@ -10,9 +11,9 @@ const Mesas = () => {
           <div className="row">
             <div className="col-md-3 text-center">
               <label style={{ margin: "0px", width: "180px" }}>
-                Cantidad de comensales
+               Acompañantes
               </label>
-              <input type="number" min={1} max={10} />
+              <input type="number"  min={0} max={10} />
             </div>
             <div className="col-md-3 text-center">
               <label style={{ margin: "0px", width: "180px" }}>
@@ -52,213 +53,33 @@ const Mesas = () => {
                   <tr></tr>
                 </thead>
                 <tbody>
+                  
                   <tr>
                     <th />
                     <th>1</th>
                     <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
                   </tr>
+                  
                   <tr>
                     <td>1</td>
-                    <td>
-                      <label
-                        className="btn btn-success btn-md"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="white">5 asientos</font>
-                        </strong>
-                      </label>
-                    </td>
-                    <td>
-                      <label
-                        className="btn btn-danger btn-md disabled"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" disabled />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="gray">ocupado</font>
-                        </strong>
-                      </label>
-                    </td>
-                    <td>
-                      <label
-                        className="btn btn-success btn-md"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="white">5 asientos</font>
-                        </strong>
-                      </label>
-                    </td>
-                    <td>
-                      <label
-                        className="btn btn-danger btn-md disabled"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" disabled />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="gray">ocupado</font>
-                        </strong>
-                      </label>
-                    </td>
+                    <Mesa disponible={true} asientos={7} numero={1}/>
+                    <Mesa disponible={false} asientos={7} numero={1}/>
+                    
                   </tr>
                   <tr>
                     <td>2</td>
-                    <td>
-                      <label
-                        className="btn btn-success btn-md"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="white">5 asientos</font>
-                        </strong>
-                      </label>
-                    </td>
-                    <td>
-                      <label
-                        className="btn btn-danger btn-md disabled"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" disabled />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="gray">ocupado</font>
-                        </strong>
-                      </label>
-                    </td>
-                    <td>
-                      <label
-                        className="btn btn-success btn-md"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="white">5 asientos</font>
-                        </strong>
-                      </label>
-                    </td>
-                    <td>
-                      <label
-                        className="btn btn-danger btn-md disabled"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" disabled />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="gray">ocupado</font>
-                        </strong>
-                      </label>
-                    </td>
+                    
+                      <Mesa disponible={null} />         
+                      <Mesa disponible={false} asientos={7} numero={1}/>
                   </tr>
                   <tr>
                     <td>3</td>
-                    <td>
-                      <label
-                        className="btn btn-success btn-md"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="white">5 asientos</font>
-                        </strong>
-                      </label>
-                    </td>
-                    <td>
-                      <label
-                        className="btn btn-danger btn-md disabled"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" disabled />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="gray">ocupado</font>
-                        </strong>
-                      </label>
-                    </td>
-                    <td>
-                      <label
-                        className="btn btn-success btn-md"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="white">5 asientos</font>
-                        </strong>
-                      </label>
-                    </td>
-                    <td>
-                      <label
-                        className="btn btn-danger btn-md disabled"
-                        title="Editar Mesa"
-                      >
-                        <input type="checkbox" disabled />
-                        <font color="black" size={4}>
-                          <strong>05</strong>
-                        </font>
-                        <i className="fas fa-utensils" />
-                        <br />
-                        <strong>
-                          <font color="gray">ocupado</font>
-                        </strong>
-                      </label>
-                    </td>
+                    
+                      <Mesa disponible={false} asientos={7} numero={1}/>
+                   
+                      <Mesa disponible={false} asientos={7} numero={1}/>
+                    
+                   
                   </tr>
                 </tbody>
                 <tfoot>
