@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Mesa = ({disponible, asientos, numero}) => {
+const Mesa = ({disponible=null, asientos, numero}) => {
     return (
         <td>
         {disponible?

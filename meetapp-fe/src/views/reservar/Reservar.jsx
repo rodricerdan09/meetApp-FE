@@ -11,6 +11,7 @@ const Reservar = () => {
   const [locales, setLocales] = useState(arrayDeLocales);
   console.log(locales[0]) */
   const [search, setSearch] = useState("");
+  const [tipo, setTipo] = useState("");
   const [locales, setLocales] = useState( 
     {
       locales: [], 
@@ -28,12 +29,15 @@ const Reservar = () => {
   useEffect (() => {
     cargarLocales();
   }, []);
-  
+
+
   const localesFiltrados = locales.locales.filter((local) =>
-  local.nombre.toLowerCase().includes(search.toLowerCase())|
-  local.tipo.toLowerCase().includes(search.toLowerCase())|
-  local.direccion.toLowerCase().includes(search.toLowerCase())
-);
+    local.tipo.toLowerCase().includes(tipo.toLowerCase()) 
+    &&(
+      local.nombre.toLowerCase().includes(search.toLowerCase())|
+      local.direccion.toLowerCase().includes(search.toLowerCase())
+    )
+  );
 
   return (
     <div className="container-fluid">
@@ -61,7 +65,7 @@ const Reservar = () => {
       <div className="card shadow">
         <div className="card-body">
           <div className="row">
-            <div className="col-md-6 text-nowrap">
+            <div className="col-md-3 text-nowrap">
               <div
                 id="dataTable_length"
                 className="dataTables_length"
@@ -80,12 +84,23 @@ const Reservar = () => {
                 </label>
               </div>
             </div>
-            <div className="col-md-6">
-              <div
-                className="text-md-right dataTables_filter"
-                id="dataTable_filter"
-              >
+            <div className="col-md-3 text-nowrap">
                 <label>
+                  Tipo&nbsp;
+                  <select className="form-control form-control-sm custom-select custom-select-sm" defaultValue={10} onChange={(e)=>{setTipo(e.target.value)}}>
+                    <option value={""}>
+                      todos
+                    </option>
+                    <option value={"bar"}>bar</option>
+                    <option value={"restaurante"}>restaurante</option>
+                    <option value={"cafetería"}>cafetería</option>
+                  </select>
+                </label>
+              
+            </div>
+            <div className="col-md-6">
+             
+                <label >
                   <input
                     type="search"
                     className="form-control form-control-sm"
@@ -95,7 +110,7 @@ const Reservar = () => {
                     onChange={(e) => setSearch(e.target.value)}
                   />
                 </label>
-              </div>
+              
             </div>
           </div>
           <div
@@ -148,7 +163,7 @@ const Reservar = () => {
                 role="status"
                 aria-live="polite"
               >
-                Mostrando 1 a 3 de 1
+                {localesFiltrados.length !==0 ?  `Mostrando 1 a ${localesFiltrados.length} de 1` : "No hay resultados"}
               </p>
             </div>
             <div className="col-md-6">

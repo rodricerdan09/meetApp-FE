@@ -33,8 +33,15 @@ const Routes = () => {
           path="/reservar"
           component={Reservar}
         ></ProtectedRoute>
-        <Route path="/" component={Home}></Route>
-        <Route path="*" component={NotFound}></Route>
+          
+        <Route exact
+          path="/" 
+          component={Home}
+          ></Route>
+        <Route 
+          path="*" 
+          component={NotFound}
+          ></Route>
       </Switch>
     );
 }

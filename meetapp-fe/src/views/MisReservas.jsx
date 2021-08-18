@@ -4,7 +4,7 @@ const MisReservas = () => {
   return (
     <div className="container-fluid">
       <h3 className="text-dark mb-4">
-        <strong>Inicio</strong>
+        <strong>Mis Reservas</strong>
       </h3>
       <div className="card shadow">
         <div className="card-body">
