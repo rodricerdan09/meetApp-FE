@@ -5,9 +5,8 @@ import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 //HOOKS
-import { useState, useRef } from 'react';
 import {useAuth0} from '@auth0/auth0-react';
-
+import {useRef } from 'react';
 //layout
 import Leftside from './layout/Leftside';  
 import Header from './layout/Header'  
@@ -21,9 +20,7 @@ import Routes from './routes/Routes.jsx';
 function App() { 
   let toggledRef = useRef();
   const toggled = () => toggledRef.current();
-   
-  
-  
+
   const {isLoading} = useAuth0(); 
   if (isLoading) {
     return( 
@@ -38,7 +35,7 @@ function App() {
         <Leftside toggledRef={toggledRef}/>  
         <div id="content-wrapper" className="d-flex flex-column">  
           <div id="content">  
-            <Header handleClick={toggled}/>  
+            <Header toggled={toggled}/>  
             <Routes/>
           </div>  
           <Footer /> 

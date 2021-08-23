@@ -98,14 +98,32 @@ const Reservar = () => {
             </div>
             <div className="col-md-3 text-nowrap">
                 <label>
-                  Tipo&nbsp;
-                  <select className="form-control form-control-sm custom-select custom-select-sm" defaultValue={10} onChange={(e)=>{setTipo(e.target.value)}}>
-                    <option value={""}>
+                  Categoria&nbsp;
+                  <select 
+                    className="form-control form-control-sm custom-select custom-select-sm" 
+                    defaultValue={10} 
+                    onChange={(e)=>{setTipo(e.target.value)}}
+                  >
+                    <option 
+                      value={""}
+                    >
                       todos
                     </option>
-                    <option value={"bar"}>bar</option>
-                    <option value={"restaurante"}>restaurante</option>
-                    <option value={"cafetería"}>cafetería</option>
+                    <option 
+                      value={"bar"}
+                    >
+                      bar
+                    </option>
+                    <option 
+                      value={"restaurante"}
+                    >
+                      restaurante
+                    </option>
+                    <option 
+                      value={"cafetería"}
+                    >
+                      cafetería
+                    </option>
                   </select>
                 </label>
               
@@ -135,7 +153,7 @@ const Reservar = () => {
               <thead>
                 <tr>
                   <th>Local</th>
-                  <th>Tipo</th>
+                  <th>Categoria</th>
                   <th>Dirección</th>
                   <th>Capacidad Ocupada</th>
                 </tr>
