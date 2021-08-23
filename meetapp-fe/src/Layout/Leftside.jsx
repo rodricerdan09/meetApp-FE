@@ -2,12 +2,25 @@
 // toggled
 import React  from 'react'  
 import { Link } from 'react-router-dom';
-//import { useState } from 'react';  
+import { useState,useEffect } from 'react';  
 ////
-const Leftside = ({toggled, slidebarToggled}) => {
+const Leftside = (props) => {
+  const [isToggled, setIsToggled] = useState(false);
+  const toggled=()=>setIsToggled(isToggled=>!isToggled);
+  useEffect(() => {
+    props.toggledRef.current = toggled;
 
+    return () => {
+      props.toggledRef.current = null;
+    };
+  });
   return (
-    <nav className={`navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 ${toggled}`}>
+    <nav className={
+      isToggled ? 
+        `navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 toggled`
+        :`navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0`
+      }
+    >
       <div className="container-fluid d-flex flex-column p-0">
         <Link className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" to="/">
           <div className="sidebar-brand-icon rotate-n-15">
@@ -42,7 +55,7 @@ const Leftside = ({toggled, slidebarToggled}) => {
         </ul>
         <div className="text-center d-none d-md-inline">
           <button  
-            onClick={slidebarToggled} 
+            onClick={toggled} 
             className="btn rounded-circle border-0" 
             id="sidebarToggle" 
             type="button" />
@@ -53,6 +66,6 @@ const Leftside = ({toggled, slidebarToggled}) => {
 }
 
 export default Leftside
-  
+
 
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import LineaDeReserva from "./LineaDeReserva.jsx";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import moment from "moment";
 const Reservar = () => {
   /* const arrayDeLocales=[
     {"local":"El Surtidor", "tipo":"Restobar", "direccion":"French 1010", "porcentajeOcupado":31},
@@ -10,6 +11,12 @@ const Reservar = () => {
   ]
   const [locales, setLocales] = useState(arrayDeLocales);
   console.log(locales[0]) */
+
+
+  const now = moment();
+  const later = moment();
+  let date= now.format('YYYY-MM-DD');
+  let maxDate=later.add(1, 'months').format('YYYY-MM-DD');
   const [search, setSearch] = useState("");
   const [tipo, setTipo] = useState("");
   const [locales, setLocales] = useState( 
@@ -51,7 +58,12 @@ const Reservar = () => {
               <label style={{ margin: "0px", width: "180px" }}>
                 <strong>Ingrese día a reservar</strong>
               </label>
-              <input type="date" defaultValue="2021-06-19" />
+              <input 
+                type="date" 
+                defaultValue={date} 
+                min={date} 
+                max={maxDate}
+              />
             </div>
             <div className="col-md-6 text-center">
               <label style={{ width: "180px" }}>

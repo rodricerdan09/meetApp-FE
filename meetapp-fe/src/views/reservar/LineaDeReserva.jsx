@@ -38,7 +38,7 @@ const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado, key }) => {
             </td>
             <td>
                 <NavLink
-                className="btn btn-primary"
+                className={ porcentajeOcupado !==100 ?"btn btn-primary":"btn btn-primary disabled" }
                 style={{background: 'rgb(78, 115, 223)'}}
                 to='/reservar/mesas'
                 >

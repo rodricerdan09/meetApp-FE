@@ -6,17 +6,26 @@ const Mesas = () => {
     [
       {disponible: false, asientos: '4', numero: 1},
       {disponible: null, asientos: '4', numero: 2},
+      {disponible: true, asientos: '4', numero: 3},
       {disponible: true, asientos: '4', numero: 3}
     ],
     [
       {disponible: true, asientos: '2', numero: 4},
-      {disponible: true, asientos: '4', numero: 5},
-      {disponible: true, asientos: '4', numero: 6}
+      {disponible: false, asientos: '4', numero: 5},
+      {disponible: null, asientos: '4', numero: 6},
+      {disponible: true, asientos: '4', numero: 3}
     ],
     [
       {disponible: true, asientos: '2', numero: 7},
       {disponible: true, asientos: '4', numero: 8},
       {disponible: true, asientos: '4', numero: 9},
+      {disponible: true, asientos: '4', numero: 3}
+    ],
+    [
+      {disponible: true, asientos: '2', numero: 7},
+      {disponible: true, asientos: '4', numero: 8},
+      {disponible: true, asientos: '4', numero: 9},
+      {disponible: true, asientos: '4', numero: 3}
     ]
   ]);
   const getMesas = (mesas) => {

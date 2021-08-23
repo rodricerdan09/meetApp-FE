@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import  LogoutButton from "./LogoutButton.jsx"
 import  LoginButton from "./LoginButton.jsx"
 
-const Header = ({ slidebarToggled }) => {
+const Header = ({ toggled }) => {
   const { isAuthenticated, user } = useAuth0();
   let name = "persona no registrada";
   let image = "https://res.cloudinary.com/practicaldev/image/fetch/s--MfegQ8F8--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://www.gravatar.com/avatar/00000000000000000000000000000000%3Fd%3Dmp%26f%3Dy%26s%3D128";
@@ -18,7 +18,7 @@ const Header = ({ slidebarToggled }) => {
     <div>
       <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
         <button
-          onClick={slidebarToggled}
+          onClick={toggled}
           id="sidebarToggleTop"
           className="btn btn-link d-md-none rounded-circle mr-3"
         >
@@ -34,7 +34,7 @@ const Header = ({ slidebarToggled }) => {
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              to={" "} 
+              to={"#"} 
             >
               <span className="mr-2 d-none d-lg-inline text-gray-600 small">
                 {name}
