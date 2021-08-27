@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.jsx';
-import {BrowserRouter as Router} from 'react-router-dom'
+import {HashRouter as Router} from 'react-router-dom'
 import Auth0ProviderWithHistory from "./auth/Auth0ProviderWithHistory.jsx";
 
 // origin me redirecciona a donde estaba antes de loguearme

@@ -1,8 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
-const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado, key }) => {
-    
+const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado, url, key }) => {
+    console.log(url)
     let classColorBar="";
     porcentajeOcupado >=90 ? (classColorBar="progress-bar bg-danger") : porcentajeOcupado >=50 ? (classColorBar="progress-bar bg-warning"):(classColorBar="progress-bar bg-success") 
     return (
@@ -37,13 +37,13 @@ const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado, key }) => {
                 </div>
             </td>
             <td>
-                <NavLink
+                <Link
                 className={ porcentajeOcupado !==100 ?"btn btn-primary":"btn btn-primary disabled" }
                 style={{background: 'rgb(78, 115, 223)'}}
-                to='/reservar/mesas'
+                to={`${url}/mesas`}
                 >
                 Reservar
-                </NavLink>
+                </Link>
             </td>
         </tr>
 

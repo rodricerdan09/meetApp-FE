@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import LineaDeReserva from "./LineaDeReserva.jsx";
-import { Link } from "react-router-dom";
+
+import { Link, useRouteMatch } from "react-router-dom";
 import axios from 'axios';
 import moment from "moment";
 const Reservar = () => {
@@ -12,7 +13,7 @@ const Reservar = () => {
   const [locales, setLocales] = useState(arrayDeLocales);
   console.log(locales[0]) */
 
-
+  let {url} = useRouteMatch(); //{path,url}
   const now = moment();
   const later = moment();
   let date= now.format('YYYY-MM-DD');
@@ -115,6 +116,11 @@ const Reservar = () => {
                       bar
                     </option>
                     <option 
+                      value={"restobar"}
+                    >
+                      Restobar
+                    </option>
+                    <option 
                       value={"restaurante"}
                     >
                       restaurante
@@ -168,7 +174,8 @@ const Reservar = () => {
                       local={local.nombre} 
                       tipo={local.tipo} 
                       direccion={local.direccion} 
-                      porcentajeOcupado={local.aforo} 
+                      porcentajeOcupado={local.aforo}
+                      url={url} 
                     />
                   )
                 } 

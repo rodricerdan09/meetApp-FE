@@ -9,39 +9,45 @@ import Perfil from '../views/Perfil';
 import Reservar from '../views/reservar/Reservar';
 import NotFound from '../views/NotFound';
 import Mesas from '../views/reservar/Mesas.jsx';
+import ExternalApi from '../views/ExternalApi.jsx';
 
 const Routes = () => {
     return (
       <Switch>
+        <Route
+          exact
+          path="/external"
+          component={ExternalApi}
+        />
         <ProtectedRoute
           exact
           path="/mis-reservas"
           component={MisReservas}
-        ></ProtectedRoute>
+        />
         <ProtectedRoute
           exact
           path="/perfil"
           component={Perfil}
-        ></ProtectedRoute>
-        <ProtectedRoute
+        />
+       <ProtectedRoute
           exact
           path="/reservar/mesas"
           component={Mesas}
-        ></ProtectedRoute>
+        /> 
         <ProtectedRoute
           exact
           path="/reservar"
           component={Reservar}
-        ></ProtectedRoute>
+        />
           
         <Route exact
           path="/" 
           component={Home}
-          ></Route>
+        />
         <Route 
           path="*" 
           component={NotFound}
-          ></Route>
+        />
       </Switch>
     );
 }

@@ -1,6 +1,42 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
+import LineaDeMisReservas from "./LineaDeMisReservas";
+import Reservar from "./reservar/Reservar";
 const MisReservas = () => {
+  const [search, setSearch] = useState("");
+  const [reservas, setReservas] = useState( 
+    {
+      reservas: [
+        {nombre:"San José", estado:"Pendiente", fecha:"11-09-2021", hora:"22:00", autotest:true},
+        {nombre:"Mirasoles", estado:"Pendiente", fecha:"26-09-2021", hora:"20:30", autotest:false}
+      ], 
+      status: true
+    })
+
+  // const cargarReservas = () => {
+  //   var url = "http://localhost:5000/api/locales/";
+  //   axios.get(url).then(res => {
+  //       setReservas({
+  //         reservas: res.data,
+  //         status: true
+  //       });
+  //   });
+  // }
+  // useEffect (() => {
+  //   cargarReservas();
+  // }, []);
+
+
+  const reservasFiltradas = reservas.reservas.filter((reserva) =>
+    reserva.nombre.toLowerCase().includes(search.toLowerCase())|
+    reserva.fecha.toLowerCase().includes(search.toLowerCase())|
+    reserva.hora.toLowerCase().includes(search.toLowerCase())|
+    reserva.estado.toLowerCase().includes(search.toLowerCase())
+  );
+
+
   return (
     <div className="container-fluid">
       <h3 className="text-dark mb-4">
@@ -38,7 +74,9 @@ const MisReservas = () => {
                     type="search"
                     className="form-control form-control-sm"
                     aria-controls="dataTable"
-                    placeholder="Buscar local"
+                    placeholder="Buscar en reservas"
+                    autoFocus
+                    onChange={(e) => setSearch(e.target.value)}
                   />
                 </label>
               </div>
@@ -61,37 +99,16 @@ const MisReservas = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    San José
-                  </td>
-                  <td>
-                    11-09-2021
-                    <br />
-                  </td>
-                  <td>22:00</td>
-                  <td>Pendiente</td>
-                  <td>
-                    <button className="btn btn-primary disabled" type="button">
-                      Completar
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Mirasoles
-                  </td>
-                  <td>26-09-2021</td>
-                  <td>20:30</td>
-                  <td>Pendiente</td>
-                  <td>
-                    <button className="btn btn-primary" type="button">
-                      Completar
-                    </button>
-                    <br />
-                  </td>
-                </tr>
-              
+                
+                {reservasFiltradas.map(reserva =>
+                    <LineaDeMisReservas 
+                      key={reserva.id}
+                      nombre={reserva.nombre} 
+                      fecha={reserva.fecha} 
+                      hora={reserva.hora}
+                      estado={reserva.estado} 
+                      autotest={reserva.autotest} 
+                    />)}
               </tbody>
               <tfoot>
               <tr>
@@ -113,7 +130,7 @@ const MisReservas = () => {
                 role="status"
                 aria-live="polite"
               >
-                Mostrando 1 de 1<br />
+                {reservasFiltradas.length !==0 ?  `Mostrando 1 a ${reservasFiltradas.length} de 1` : "No hay resultados"}<br />
               </p>
             </div>
             <div className="col-md-6">
@@ -145,3 +162,5 @@ const MisReservas = () => {
 };
 
 export default MisReservas;
+
+

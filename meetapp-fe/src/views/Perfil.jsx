@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 const Perfil = () => {
   const { user } = useAuth0();
+  console.log(JSON.stringify(user));
   const { given_name,family_name, picture, email } = user;
   return (
     <div className="container">
