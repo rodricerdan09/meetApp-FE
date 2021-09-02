@@ -39,7 +39,7 @@ const ExternalApi = () => {
       setMessage(error.message);
     }
   };
-
+  console.log(message)
   return (
     <div className="container">
       <h1>External API</h1>

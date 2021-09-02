@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link } from 'react-router-dom';
 
-const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado, url, key }) => {
+const LineaDeReserva = ({local,categoria, direccion, porcentajeOcupado, url, key }) => {
     console.log(url)
     let classColorBar="";
     porcentajeOcupado >=90 ? (classColorBar="progress-bar bg-danger") : porcentajeOcupado >=50 ? (classColorBar="progress-bar bg-warning"):(classColorBar="progress-bar bg-success") 
@@ -16,7 +16,7 @@ const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado, url, key }) =
                     /> */}
                 {local}
             </td>
-            <td>{tipo}</td>
+            <td>{categoria}</td>
             <td>
                 {direccion}
                 <br />
@@ -39,7 +39,7 @@ const LineaDeReserva = ({local, tipo,direccion, porcentajeOcupado, url, key }) =
             <td>
                 <Link
                 className={ porcentajeOcupado !==100 ?"btn btn-primary":"btn btn-primary disabled" }
-                style={{background: 'rgb(78, 115, 223)'}}
+                style={{background: 'rgb(78, 115, 223), cH:256'}}
                 to={`${url}/mesas`}
                 >
                 Reservar

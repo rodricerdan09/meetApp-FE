@@ -19,7 +19,7 @@ const Reservar = () => {
   let date= now.format('YYYY-MM-DD');
   let maxDate=later.add(1, 'months').format('YYYY-MM-DD');
   const [search, setSearch] = useState("");
-  const [tipo, setTipo] = useState("");
+  const [categoria, setCategoria] = useState("");
   const [locales, setLocales] = useState( 
     {
       locales: [], 
@@ -40,7 +40,7 @@ const Reservar = () => {
 
 
   const localesFiltrados = locales.locales.filter((local) =>
-    local.tipo.toLowerCase().includes(tipo.toLowerCase()) 
+    local.categorias.categoria.toLowerCase().includes(categoria.toLowerCase()) 
     &&(
       local.nombre.toLowerCase().includes(search.toLowerCase())|
       local.direccion.toLowerCase().includes(search.toLowerCase())
@@ -103,7 +103,7 @@ const Reservar = () => {
                   <select 
                     className="form-control form-control-sm custom-select custom-select-sm" 
                     defaultValue={10} 
-                    onChange={(e)=>{setTipo(e.target.value)}}
+                    onChange={(e)=>{setCategoria(e.target.value)}}
                   >
                     <option 
                       value={""}
@@ -172,7 +172,7 @@ const Reservar = () => {
                     <LineaDeReserva 
                       key={local.id}
                       local={local.nombre} 
-                      tipo={local.tipo} 
+                      categoria={local.categorias.categoria} 
                       direccion={local.direccion} 
                       porcentajeOcupado={local.aforo}
                       url={url} 

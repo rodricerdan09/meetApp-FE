@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Mesa from './Mesa';
 const Mesas = () => {
+  const[acompaniantes,setAcompaniantes]=useState(0);  
   const [mesas, setMesas] = useState ([
     [
       {disponible: false, asientos: '4', numero: 1},
@@ -28,6 +29,16 @@ const Mesas = () => {
       {disponible: true, asientos: '4', numero: 3}
     ]
   ]);
+  const handleChange= event => {
+    let { value, min, max } = event.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+
+    setAcompaniantes(value );
+  };
+  useEffect(() => {
+    console.log(acompaniantes)
+    
+  }, [acompaniantes]);
   const getMesas = (mesas) => {
     let table = []; 
     let y= mesas[0].length;
@@ -62,7 +73,7 @@ const Mesas = () => {
             <label style={{margin: '0px', width: '180px'}}>
               Acompañantes
             </label>
-            <input type="number" min={0} max={10} />
+            <input type="number" min={0} max={10} value={acompaniantes} onChange={handleChange}/>
           </div>
           <div className="col-md-3 text-center">
             <label style={{margin: '0px', width: '180px'}}>
