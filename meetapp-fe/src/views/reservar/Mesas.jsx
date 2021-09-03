@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Mesa from './Mesa';
+
 const Mesas = () => {
-  const[acompaniantes,setAcompaniantes]=useState(0);  
   const [mesas, setMesas] = useState ([
     [
       {disponible: false, asientos: '4', numero: 1},
@@ -29,16 +29,7 @@ const Mesas = () => {
       {disponible: true, asientos: '4', numero: 3}
     ]
   ]);
-  const handleChange= event => {
-    let { value, min, max } = event.target;
-    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
 
-    setAcompaniantes(value );
-  };
-  useEffect(() => {
-    console.log(acompaniantes)
-    
-  }, [acompaniantes]);
   const getMesas = (mesas) => {
     let table = []; 
     let y= mesas[0].length;
@@ -56,16 +47,42 @@ const Mesas = () => {
             disponible={mesas[i][j].disponible}
             asientos={mesas[i][j].asientos}
             numero={mesas[i][j].numero}
+            handleChecked ={handleChecked}
           />);
         }
         table.push(<tr>{content}</tr>)
       }
     return table    
   };
+  const [form, setForm]=useState({
+    
+    "acompaniantes":0,
+    });
 
+  const handleChanged=(event)=>{
+    console.log("changed")
+    let { value, min, max,name } = event.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+
+    setForm({
+      ...form,
+      [name]:value,
+      }
+    )
+  } 
+  const handleChecked=(event)=>{
+    console.log("checked")
+    let {name,checked } = event.target;
+    setForm({
+      ...form,
+      [name]:checked,
+      }
+    )
+  }
+  const handleSubmit=(event)=>{event.preventDefault(); console.log(JSON.stringify(form))}
   return (
-    <div className="container-fluid">
-      <h3 className="text-dark mb-4">Reserva de Mesas</h3>
+    <form className="container-fluid" onSubmit={handleSubmit}>
+      <h3 className="text-dark mb-4"><strong>Reserva de Mesas </strong></h3>
 
       <div className="card-body">
         <div className="row">
@@ -73,7 +90,7 @@ const Mesas = () => {
             <label style={{margin: '0px', width: '180px'}}>
               Acompañantes
             </label>
-            <input type="number" min={0} max={10} value={acompaniantes} onChange={handleChange}/>
+            <input type="number" min={0} max={10} id="acompaniantes" name="acompaniantes" value={form.acompaniantes} onChange={handleChanged}/>
           </div>
           <div className="col-md-3 text-center">
             <label style={{margin: '0px', width: '180px'}}>
@@ -120,15 +137,14 @@ const Mesas = () => {
           </div>
         </div>
       </div>
-      <Link
+      <button
         className="btn btn-primary d-flex mx-auto mt-3"
-        role="button"
         style={{width: '100px', marginTop: '10px', marginBottom: '30px'}}
         to="/reservar/mesas"
       >
         Confirmar
-      </Link>
-    </div>
+      </button>
+    </form>
   );
 };
 

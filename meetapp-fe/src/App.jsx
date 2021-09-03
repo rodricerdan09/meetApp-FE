@@ -27,7 +27,7 @@ function App() {
       <Loading/>
     )
   }
-  
+  console.log("me vuelvo a render")
   return (  
     <div className="App">  
       
