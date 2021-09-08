@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import LineaDeReserva from "./LineaDeReserva.jsx";
 
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch} from "react-router-dom";
 import axios from 'axios';
 import moment from "moment";
 const Reservar = () => {
@@ -49,7 +49,7 @@ const Reservar = () => {
 
   return (
     <div className="container-fluid">
-      <h3 className="text-dark mb-4">
+      <h3 className="text-primary mb-4">
         <strong>Hacer Una Nueva Reserva</strong>
       </h3>
       <div className="card">
@@ -203,7 +203,7 @@ const Reservar = () => {
                 {localesFiltrados.length !==0 ?  `Mostrando 1 a ${localesFiltrados.length} de 1` : "No hay resultados"}
               </p>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6" >
               <nav className="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                 <ul className="pagination">
                   <li className="page-item">
@@ -211,7 +211,7 @@ const Reservar = () => {
                       <span aria-hidden="true">«</span>
                     </Link>
                   </li>
-                  <li className="page-item active">
+                  <li className="page-item active" >
                     <Link  className="page-link" to="/reservar">
                       1
                     </Link>

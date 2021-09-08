@@ -31,7 +31,7 @@ const Routes = () => {
         />
        <ProtectedRoute
           exact
-          path="/reservar/mesas"
+          path="/reservar/:local/mesas/piso/:piso"
           component={Mesas}
         /> 
         <ProtectedRoute

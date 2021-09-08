@@ -1,8 +1,9 @@
 import React from 'react'
-import {Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 const LineaDeReserva = ({local,categoria, direccion, porcentajeOcupado, url, key }) => {
     console.log(url)
+    let history=useHistory();
     let classColorBar="";
     porcentajeOcupado >=90 ? (classColorBar="progress-bar bg-danger") : porcentajeOcupado >=50 ? (classColorBar="progress-bar bg-warning"):(classColorBar="progress-bar bg-success") 
     return (
@@ -37,13 +38,15 @@ const LineaDeReserva = ({local,categoria, direccion, porcentajeOcupado, url, key
                 </div>
             </td>
             <td>
-                <Link
-                className={ porcentajeOcupado !==100 ?"btn btn-primary":"btn btn-primary disabled" }
-                style={{background: 'rgb(78, 115, 223), cH:256'}}
-                to={`${url}/mesas`}
+                <button
+                    className={ porcentajeOcupado !==100 ?"btn btn-secondary btn-sm":"btn btn-secondary btn-sm disabled" }
+                    onClick={e=>history.push(`${url}/${local}/mesas/piso/1`)}
                 >
-                Reservar
-                </Link>
+                    <span className="icon text-white-50">
+                        <i className="fas fa-arrow-right"/>
+                    </span>
+                    <span className="text">Reservar</span>
+                </button>
             </td>
         </tr>
 

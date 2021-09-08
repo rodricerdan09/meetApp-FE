@@ -1,68 +1,98 @@
-import React, {useState,useEffect} from 'react';
-import {Link} from 'react-router-dom';
+
+import React, {useState,useEffect,useRef} from 'react';
 import Mesa from './Mesa';
-
+import axios from "axios";
+import Loading from './../../layout/Loading';
 const Mesas = () => {
-  const [mesas, setMesas] = useState ([
-    [
-      {disponible: false, asientos: '4', numero: 1},
-      {disponible: null, asientos: '4', numero: 2},
-      {disponible: true, asientos: '4', numero: 3},
-      {disponible: true, asientos: '4', numero: 3}
-    ],
-    [
-      {disponible: true, asientos: '2', numero: 4},
-      {disponible: false, asientos: '4', numero: 5},
-      {disponible: null, asientos: '4', numero: 6},
-      {disponible: true, asientos: '4', numero: 3}
-    ],
-    [
-      {disponible: true, asientos: '2', numero: 7},
-      {disponible: true, asientos: '4', numero: 8},
-      {disponible: true, asientos: '4', numero: 9},
-      {disponible: true, asientos: '4', numero: 3}
-    ],
-    [
-      {disponible: true, asientos: '2', numero: 7},
-      {disponible: true, asientos: '4', numero: 8},
-      {disponible: true, asientos: '4', numero: 9},
-      {disponible: true, asientos: '4', numero: 3}
-    ]
-  ]);
-
-  const getMesas = (mesas) => {
-    let table = []; 
-    let y= mesas[0].length;
-    let encabezado=[];
-    encabezado.push(<th></th>)
-    for (let j = 0; j < y; j++) {
-      encabezado.push(<th>{j+1}</th>)
+  
+  const disponibleRef = useRef(null);
+  const [piso, setPiso]=useState(1);
+  const [mesas, setMesas] = useState( 
+    {
+      mesas: [], 
+      status: false
+    }
+  );
+  const cargarReservas = (piso) => {
+    var url = `http://localhost:5000/api/mesas/${piso}`;
+    axios.get(url)
+    .then(res => 
+      setMesas(
+        {
+          mesas: res.data,
+          status: true
+        }
+        )
+        );
+      }
+      useEffect (_=> cargarReservas(piso), [piso]);
+      
+      const bodyMesas = ({mesas}) => {
+        let lugar=0
+        let table = []; 
+        let y= mesas.mesas[0].length;
+        mesas=mesas.mesas
+        let encabezado=[];
+        encabezado.push(<th></th>)
+        for (let j = 0; j < y; j++) {
+          encabezado.push(
+            <th>
+          {j+1}
+        </th>
+      )
     }
     table.push(<tr>{encabezado}</tr>)
     for (let i = 0; i < mesas.length; i++) {
-        let content = []; 
-        content.push(<td>{i+1}</td>)
-        for (let j = 0; j <y; j++) {    
-          content.push(<Mesa
-            disponible={mesas[i][j].disponible}
-            asientos={mesas[i][j].asientos}
-            numero={mesas[i][j].numero}
-            handleChecked ={handleChecked}
-          />);
+      let content = []; 
+      content.push(
+        <td>
+            {i+1}
+          </td>
+        )
+        
+        for (let j = 0; j <y; j++) {  
+          
+          if(mesas[i][j].disponible){
+            lugar+=mesas[i][j].asientos
+          }
+          
+          content.push(
+            <Mesa
+              disponible={mesas[i][j].disponible}
+              asientos={mesas[i][j].asientos}
+              numero={mesas[i][j].numero}
+              handleChecked={handleChecked}
+            />
+          );
         }
-        table.push(<tr>{content}</tr>)
+        table.push(
+          <tr>
+            {content}
+          </tr>
+        )
       }
-    return table    
-  };
-  const [form, setForm]=useState({
+      disponibleRef.current.innerHTML=`Lugares disponibles: ${lugar}`;
+      return table    
+    };
     
-    "acompaniantes":0,
-    });
-
-  const handleChanged=(event)=>{
-    console.log("changed")
-    let { value, min, max,name } = event.target;
-    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+    const [form, setForm]=useState(
+      {
+        "acompaniantes":0,
+      }
+      );
+      
+      const handleSelectOnChanged=(e)=>setPiso(e.target.value)
+      const handleChanged=(event)=>{
+        console.log("changed")
+        let { value, min, max, name } = event.target;
+        value = Math
+        .max(
+          Number(min), 
+          Math.min(
+            Number(max), 
+            Number(value)
+            )
+      );
 
     setForm({
       ...form,
@@ -72,14 +102,20 @@ const Mesas = () => {
   } 
   const handleChecked=(event)=>{
     console.log("checked")
-    let {name,checked } = event.target;
-    setForm({
-      ...form,
-      [name]:checked,
-      }
-    )
+    let {name, checked} = event.target;
+    if (!checked)
+        delete form[name]
+    else
+      setForm({
+        ...form,
+        [name]:checked,
+        }
+      )
   }
-  const handleSubmit=(event)=>{event.preventDefault(); console.log(JSON.stringify(form))}
+  const handleSubmit=(event)=>{
+    event.preventDefault();
+    console.log(JSON.stringify(form))
+  }
   return (
     <form className="container-fluid" onSubmit={handleSubmit}>
       <h3 className="text-dark mb-4"><strong>Reserva de Mesas </strong></h3>
@@ -90,22 +126,36 @@ const Mesas = () => {
             <label style={{margin: '0px', width: '180px'}}>
               Acompañantes
             </label>
-            <input type="number" min={0} max={10} id="acompaniantes" name="acompaniantes" value={form.acompaniantes} onChange={handleChanged}/>
+            <input 
+              type="number" 
+              min={0} max={10} 
+              id="acompaniantes" 
+              name="acompaniantes" 
+              value={form.acompaniantes} 
+              onChange={handleChanged}
+            />
           </div>
           <div className="col-md-3 text-center">
-            <label style={{margin: '0px', width: '180px'}}>
-              (<strong>Lugares disponibles: 8</strong>)
+            <label  style={{margin: '0px', width: '180px'}}>
+              <strong ref={disponibleRef}/>
             </label>
           </div>
           <div className="col-md-6 text-center">
-            <label style={{width: '180px'}}>Piso del local</label>
-            <select>
+            <label style={{width: '180px'}}>
+              Piso del local 
+            </label>
+            <select 
+              onChange={handleSelectOnChanged}
+            >
               <optgroup label="Seleccione un piso">
-                <option value="12" selected>
+                <option 
+                  value={1} 
+                  selected
+                >
                   1er piso
                 </option>
-                <option value="13">2do piso</option>
-                <option value="14">3er piso</option>
+                <option value={2}>2do piso</option>
+                <option value={3}>3er piso</option>
               </optgroup>
             </select>
           </div>
@@ -126,24 +176,39 @@ const Mesas = () => {
             aria-describedby="dataTable_info"
           >
             <table className="table my-0" id="dataTable">
-              <thead>
-              </thead>
-              <tbody> 
-                {getMesas(mesas)}
-              </tbody>
-              <tfoot>
-              </tfoot>
+              {mesas.status ?  
+                <>
+                  <thead>
+                  </thead>
+                  <tbody> 
+                  {bodyMesas(mesas)}
+                  </tbody>
+                  <tfoot>
+                  </tfoot>
+                </>
+                :
+                <td>
+                  <Loading/>
+                </td>
+              }
             </table>
           </div>
         </div>
       </div>
-      <button
-        className="btn btn-primary d-flex mx-auto mt-3"
-        style={{width: '100px', marginTop: '10px', marginBottom: '30px'}}
-        to="/reservar/mesas"
-      >
-        Confirmar
-      </button>
+      {mesas.status ?  
+        <button
+          className="btn btn-primary d-flex mx-auto"
+          style={{ marginTop: '10px', marginBottom: '30px'}}
+        >
+          <span className="icon text-white-50" >
+            <i className="fas fa-check fa"/>
+          </span>
+          <span class="text">Confirmar </span>  
+          
+        </button>
+        :
+        <span/>
+      }
     </form>
   );
 };

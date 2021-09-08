@@ -1,7 +1,7 @@
 
 // toggled
 import React  from 'react'  
-import { Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { useState,useEffect } from 'react';  
 ////
 const Leftside = (props) => {
@@ -22,34 +22,34 @@ const Leftside = (props) => {
       }
     >
       <div className="container-fluid d-flex flex-column p-0">
-        <Link className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" to="/">
+        <NavLink className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" to="/">
           <div className="sidebar-brand-icon rotate-n-15">
-            <i className="fab fa-meetup" />
+            <i className="fab fa-meetup bg-primary" />
           </div>
           <div className="sidebar-brand-text mx-3">
             <span className="text-capitalize">MeetApp</span>
           </div>
-        </Link>
+        </NavLink>
         <hr className="sidebar-divider my-0" />
         <ul className="navbar-nav text-light" id="accordionSidebar">
           <hr className="sidebar-divider d-none d-md-block"></hr>
           <li className="nav-item">
-            <Link className="nav-link" to="/mis-reservas">
+            <NavLink className="nav-link" to="/mis-reservas">
               <i className="fa fa-home" />
               <span>Mis Reservas</span>
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/reservar">
+            <NavLink className="nav-link" to="/reservar">
               <i className="fa fa-calendar-check" />
               <span>Hacer una Reserva</span>
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/perfil">
+            <NavLink className="nav-link" to="/perfil">
               <i className="fas fa-user" />
               <span>Mi Perfil</span>
-            </Link>
+            </NavLink>
           </li>
           <hr className="sidebar-divider d-none d-md-block"></hr>
         </ul>

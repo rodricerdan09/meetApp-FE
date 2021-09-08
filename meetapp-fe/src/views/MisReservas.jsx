@@ -8,25 +8,22 @@ const MisReservas = () => {
   const [search, setSearch] = useState("");
   const [reservas, setReservas] = useState( 
     {
-      reservas: [
-        {nombre:"San José", estado:"Pendiente", fecha:"11-09-2021", hora:"22:00", autotest:true},
-        {nombre:"Mirasoles", estado:"Pendiente", fecha:"26-09-2021", hora:"20:30", autotest:false}
-      ], 
-      status: true
+      reservas: [], 
+      status: false
     })
 
-  // const cargarReservas = () => {
-  //   var url = "http://localhost:5000/api/locales/";
-  //   axios.get(url).then(res => {
-  //       setReservas({
-  //         reservas: res.data,
-  //         status: true
-  //       });
-  //   });
-  // }
-  // useEffect (() => {
-  //   cargarReservas();
-  // }, []);
+  const cargarReservas = () => {
+    var url = "http://localhost:5000/api/reservas/";
+    axios.get(url).then(res => {
+        setReservas({
+          reservas: res.data,
+          status: true
+        });
+    });
+  }
+  useEffect (() => {
+    cargarReservas();
+  }, []);
 
 
   const reservasFiltradas = reservas.reservas.filter((reserva) =>
