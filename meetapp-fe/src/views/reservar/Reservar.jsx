@@ -18,6 +18,9 @@ const Reservar = () => {
   const later = moment();
   let date= now.format('YYYY-MM-DD');
   let maxDate=later.add(1, 'months').format('YYYY-MM-DD');
+  let hour=now.format('HH:mm')
+  const [fecha, setFecha] = useState(date);
+  const [hora, setHora] = useState(hour);
   const [search, setSearch] = useState("");
   const [categoria, setCategoria] = useState("");
   const [locales, setLocales] = useState( 
@@ -26,8 +29,11 @@ const Reservar = () => {
       status: false
     })
   const cargarLocales = () => {
-      var url = "http://localhost:5000/api/locales/";
-      axios.get(url).then(res => {
+      let url = `http://localhost:5000/api/disponibilidad/${fecha}`;
+      axios.get(
+        url
+      )
+      .then(res => {
           setLocales({
             locales: res.data,
             status: true
@@ -36,21 +42,21 @@ const Reservar = () => {
   }
   useEffect (() => {
     cargarLocales();
-  }, []);
+  }, [fecha]);
 
 
   const localesFiltrados = locales.locales.filter((local) =>
-    local.categorias.categoria.toLowerCase().includes(categoria.toLowerCase()) 
+    local.categoria.toLowerCase().includes(categoria.toLowerCase()) 
     &&(
       local.nombre.toLowerCase().includes(search.toLowerCase())|
       local.direccion.toLowerCase().includes(search.toLowerCase())
     )
   );
-
+      console.log(hora)
   return (
-    <div className="container-fluid">
-      <h3 className="text-primary mb-4">
-        <strong>Hacer Una Nueva Reserva</strong>
+    <div className="container container-fluid">
+      <h3 className="text-black mb-4">
+        <strong>Realizar Una Nueva Reserva</strong>
       </h3>
       <div className="card">
         <div className="card-body">
@@ -60,17 +66,26 @@ const Reservar = () => {
                 <strong>Ingrese día a reservar</strong>
               </label>
               <input 
+                title="elije un día para la reserva"
                 type="date" 
                 defaultValue={date} 
                 min={date} 
                 max={maxDate}
+                onChange={e=>setFecha(e.target.value)}
               />
             </div>
             <div className="col-md-6 text-center">
               <label style={{ width: "180px" }}>
                 <strong>Ingrese hora a reservar</strong>
               </label>
-              <input type="time" defaultValue="22:00" name={0} />
+              <input 
+                type="time" 
+                defaultValue={hora}
+                step={3600}
+                name="time" 
+                title="elije una hora para la reserva"
+                onChange={e=>setHora(e.target.value)}
+              />
             </div>
           </div>
         </div>
@@ -78,7 +93,7 @@ const Reservar = () => {
       <div className="card shadow">
         <div className="card-body">
           <div className="row">
-            <div className="col-md-3 text-nowrap">
+            <div className="col-md-4 text-nowrap">
               <div
                 id="dataTable_length"
                 className="dataTables_length"
@@ -97,10 +112,11 @@ const Reservar = () => {
                 </label>
               </div>
             </div>
-            <div className="col-md-3 text-nowrap">
+            <div className="col-md-4 text-nowrap">
                 <label>
                   Categoria&nbsp;
                   <select 
+                    title="seleccione una categoria para buscar"
                     className="form-control form-control-sm custom-select custom-select-sm" 
                     defaultValue={10} 
                     onChange={(e)=>{setCategoria(e.target.value)}}
@@ -134,14 +150,15 @@ const Reservar = () => {
                 </label>
               
             </div>
-            <div className="col-md-6">
+            <div className="col-md-4">
              
                 <label >
                   <input
+                    title="realice una busqueda de un local"
                     type="search"
                     className="form-control form-control-sm"
                     aria-controls="dataTable"
-                    placeholder="Buscar local"
+                    placeholder="🔎Buscar local"
                     autoFocus
                     onChange={(e) => setSearch(e.target.value)}
                   />
@@ -172,10 +189,12 @@ const Reservar = () => {
                     <LineaDeReserva 
                       key={local.id}
                       local={local.nombre} 
-                      categoria={local.categorias.categoria} 
+                      categoria={local.categoria} 
                       direccion={local.direccion} 
-                      porcentajeOcupado={local.aforo}
-                      url={url} 
+                      porcentajeOcupado={local.porcentajeOcupado}
+                      url={url}
+                      fecha={fecha} 
+                      hora={hora}
                     />
                   )
                 } 

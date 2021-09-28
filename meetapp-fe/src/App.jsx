@@ -4,6 +4,7 @@ import React from 'react';
 import './App.css';  
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import '../node_modules/@sweetalert2/theme-bootstrap-4/bootstrap-4.css';
 //HOOKS
 import {useAuth0} from '@auth0/auth0-react';
 import {useRef } from 'react';

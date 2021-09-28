@@ -1,11 +1,15 @@
 import React from 'react'
 import { useHistory } from 'react-router';
 
-const LineaDeReserva = ({local,categoria, direccion, porcentajeOcupado, url, key }) => {
+const LineaDeReserva = ({local,categoria, direccion, porcentajeOcupado, url,fecha,hora, key }) => {
     console.log(url)
     let history=useHistory();
     let classColorBar="";
-    porcentajeOcupado >=90 ? (classColorBar="progress-bar bg-danger") : porcentajeOcupado >=50 ? (classColorBar="progress-bar bg-warning"):(classColorBar="progress-bar bg-success") 
+    porcentajeOcupado >=90 ? 
+        (classColorBar="progress-bar bg-danger") 
+            : porcentajeOcupado >=50 ? 
+                (classColorBar="progress-bar bg-warning")
+                :(classColorBar="progress-bar bg-success") 
     return (
         <tr key={key}>
             <td>
@@ -39,13 +43,18 @@ const LineaDeReserva = ({local,categoria, direccion, porcentajeOcupado, url, key
             </td>
             <td>
                 <button
-                    className={ porcentajeOcupado !==100 ?"btn btn-secondary btn-sm":"btn btn-secondary btn-sm disabled" }
-                    onClick={e=>history.push(`${url}/${local}/mesas/piso/1`)}
+                    title={`ver mesas disponibles en ${local}`}
+                    className={ 
+                        porcentajeOcupado !==100 ?
+                        "btn btn-secondary btn-sm"
+                        :"btn btn-secondary btn-sm disabled" 
+                    }
+                    onClick={e=>history.push(`local/${local}/fecha/${fecha}/hora/${hora}/mesas/`)}
                 >
-                    <span className="icon text-white-50">
+                    <span className="icon text-white-10">
                         <i className="fas fa-arrow-right"/>
                     </span>
-                    <span className="text">Reservar</span>
+                    <span className="text"> Reservar</span>
                 </button>
             </td>
         </tr>

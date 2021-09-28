@@ -5,10 +5,10 @@ const Mesa = ({disponible=null, asientos, numero,handleChecked}) => {
         <td>
         {disponible?
             <label
-                className="btn btn-success btn-md"
-                title="Reservar Mesa"
+                className="btn btn-info btn-md"
+                title={`Reservar Mesa ${numero}`}
                 >
-                <input type="checkbox" id={numero} name={numero} onChange={handleChecked}/>
+                <input type="checkbox" id={numero} name={numero} className={asientos} onChange={handleChecked}/>
                 <font color="black" size={4}>
                     <strong>{" "+numero}</strong>
                 </font>
@@ -24,7 +24,7 @@ const Mesa = ({disponible=null, asientos, numero,handleChecked}) => {
                 :
                 <label
                     className="btn btn-danger btn-md disabled"
-                    title="Reservar Mesa"
+                    title="esta mesa ya está reservada por otra persona"
                     >
                     <input type="checkbox" disabled />
                     <font color="black" size={4}>
@@ -33,7 +33,7 @@ const Mesa = ({disponible=null, asientos, numero,handleChecked}) => {
                     <i className="fas fa-utensils" />
                     <br />
                     <strong>
-                        <font color="gray">ocupado</font>
+                        <font color="gray">&nbsp;ocupado&nbsp;</font>
                     </strong>
                 </label>
         }

@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.jsx';
 import {HashRouter as Router} from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 import Auth0ProviderWithHistory from "./auth/Auth0ProviderWithHistory.jsx";
 
 // origin me redirecciona a donde estaba antes de loguearme
 ReactDOM.render(
   <React.StrictMode>
-    <Router>  
+    <Router history={createBrowserHistory} >  
       <Auth0ProviderWithHistory>
         <App />
       </Auth0ProviderWithHistory>

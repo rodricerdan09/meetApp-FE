@@ -1,7 +1,7 @@
 
 // toggled
 import React  from 'react'  
-import { NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useState,useEffect } from 'react';  
 ////
 const Leftside = (props) => {
@@ -24,7 +24,7 @@ const Leftside = (props) => {
       <div className="container-fluid d-flex flex-column p-0">
         <NavLink className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" to="/">
           <div className="sidebar-brand-icon rotate-n-15">
-            <i className="fab fa-meetup bg-primary" />
+            <i className="fab fa-meetup" />
           </div>
           <div className="sidebar-brand-text mx-3">
             <span className="text-capitalize">MeetApp</span>

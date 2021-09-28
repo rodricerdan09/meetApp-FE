@@ -1,310 +1,325 @@
 {
-    "locales":[
-        {
-            "id": 1,
-            "nombre": "Pedro's",
-            "direccion": "French 414",
-            "capacidad": 22,
-            "aforo": 22,
-            "categorias": {
-                "categoria": "Bar"
-            }
-        },
-        {
-            "id": 2,
-            "nombre": "Mirasoles",
-            "direccion": "ayacucho",
-            "capacidad": 22,
-            "aforo": 99,
-            "categorias": {
-                "categoria": "Bar"
-            }
-        }
-       
-    ],
-    "reservas": [
-        {
-            "nombre":"San José",
-            "estado":"Pendiente",
-            "fecha":"11-09-2021", 
-            "hora":"22:00", 
-            "autotest":true
-        },
-        {
-            "nombre":"Mirasoles",
-            "estado":"Pendiente", 
-            "fecha":"26-09-2021", 
-            "hora":"20:30", 
-            "autotest":false
-        },
-        {
-            "nombre":"Mirasoles",
-            "estado":"Pendiente", 
-            "fecha":"28-09-2021", 
-            "hora":"20:30", 
-            "autotest":false
-        }
-    ],
-
-    "mesas":[
-        {
-          "id":1,
-          "mesas": [
-            [
-              {
-                "disponible": false,
-                "asientos": 4,
-                "numero": 1
-              },
-              {
-                "disponible": null,
-                "asientos": 4,
-                "numero": 2
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 3
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 4
-              }
-            ],
-            [
-              {
-                "disponible": true,
-                "asientos": 2,
-                "numero": 5
-              },
-              {
-                "disponible": false,
-                "asientos": 4,
-                "numero": 6
-              },
-              {
-                "disponible": null,
-                "asientos": 4,
-                "numero": 7
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 7
-              }
-            ],
-            [
-              {
-                "disponible": true,
-                "asientos": 2,
-                "numero": 9
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 10
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 11
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 12
-              }
-            ],
-            [
-              {
-                "disponible": true,
-                "asientos": 2,
-                "numero": 13
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 14
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 15
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 16
-              }
-            ]
-          ]
-        },
-        {
-          "id":2,
-          "mesas": [
-            [
-              {
-                "disponible": false,
-                "asientos": 4,
-                "numero": 1
-              },
-              {
-                "disponible": null,
-                "asientos": 4,
-                "numero": 2
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 3
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 3
-              }
-            ],
-            [
-              {
-                "disponible": true,
-                "asientos": 2,
-                "numero": 4
-              },
-              {
-                "disponible": false,
-                "asientos": 4,
-                "numero": 5
-              },
-              {
-                "disponible": null,
-                "asientos": 4,
-                "numero": 6
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 3
-              }
-            ],
-            [
-              {
-                "disponible": true,
-                "asientos": 2,
-                "numero": 7
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 8
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 9
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 3
-              }
-            ],
-            [
-              {
-                "disponible": true,
-                "asientos": 2,
-                "numero": 7
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 8
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 9
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 3
-              }
-            ]
-          ]
-        },
-        {
-          "id":3,
-          "mesas": [
-            [
-              {
-                "disponible": true,
-                "asientos": 3,
-                "numero": 1
-              },
-              {
-                "disponible": null
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 2
-              }
-            ],
-            [
-              {
-                "disponible": true,
-                "asientos": 2,
-                "numero": 3
-              },
-              {
-                "disponible": false,
-                "asientos": 4,
-                "numero": 4
-              },
-              {
-                "disponible": null,
-                "asientos": 4,
-                "numero": 5
-              }
-            ],
-            [
-              {
-                "disponible": true,
-                "asientos": 2,
-                "numero": 5
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 6
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 7
-              }
-            ],
-            [
-              {
-                "disponible": true,
-                "asientos": 2,
-                "numero": 8
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 9
-              },
-              {
-                "disponible": true,
-                "asientos": 4,
-                "numero": 10
-              }
-            ]
-          ]
-        }
-    ]
-    
-
+  "locales": [
+    {
+      "id": 1,
+      "nombre": "Pedro's",
+      "direccion": "French 414",
+      "capacidad": 22,
+      "aforo": 22,
+      "categorias": {
+        "categoria": "Bar"
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "Mirasoles",
+      "direccion": "ayacucho",
+      "capacidad": 22,
+      "aforo": 99,
+      "categorias": {
+        "categoria": "Bar"
+      }
+    }
+  ],
+  "reservas": [
+    {
+      "id": "ktlvtg0k",
+      "nombre": "Pedro's",
+      "estado": "Pendiente",
+      "fecha": "2021-09-15",
+      "hora": "16:12",
+      "autotest": false
+    },
+    {
+      "id": "ktlvtzv5",
+      "nombre": "Pedro's",
+      "estado": "Pendiente",
+      "fecha": "2021-09-15",
+      "hora": "16:13",
+      "autotest": false
+    },
+    {
+      "id": "ktlvzve0",
+      "nombre": "Pedro's",
+      "estado": "Pendiente",
+      "fecha": "2021-09-15",
+      "hora": "16:15",
+      "autotest": false
+    },
+    {
+      "id": "ktlxejne",
+      "nombre": "Pedro's",
+      "estado": "Pendiente",
+      "fecha": "2021-09-15",
+      "hora": "16:50",
+      "autotest": false
+    },
+    {
+      "id": "ktlxfpm2",
+      "nombre": "Pedro's",
+      "estado": "Pendiente",
+      "fecha": "2021-09-15",
+      "hora": "16:58",
+      "autotest": false
+    }
+  ],
+  "mesas": [
+    {
+      "id": 1,
+      "mesas": [
+        [
+          {
+            "disponible": false,
+            "asientos": 4,
+            "numero": 1
+          },
+          {
+            "disponible": null,
+            "asientos": 4,
+            "numero": 2
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 3
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 4
+          }
+        ],
+        [
+          {
+            "disponible": true,
+            "asientos": 2,
+            "numero": 5
+          },
+          {
+            "disponible": false,
+            "asientos": 4,
+            "numero": 6
+          },
+          {
+            "disponible": null,
+            "asientos": 4,
+            "numero": 7
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 7
+          }
+        ],
+        [
+          {
+            "disponible": true,
+            "asientos": 2,
+            "numero": 9
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 10
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 11
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 12
+          }
+        ],
+        [
+          {
+            "disponible": true,
+            "asientos": 2,
+            "numero": 13
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 14
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 15
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 16
+          }
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "mesas": [
+        [
+          {
+            "disponible": false,
+            "asientos": 4,
+            "numero": 1
+          },
+          {
+            "disponible": null,
+            "asientos": 4,
+            "numero": 2
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 3
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 3
+          }
+        ],
+        [
+          {
+            "disponible": true,
+            "asientos": 2,
+            "numero": 4
+          },
+          {
+            "disponible": false,
+            "asientos": 4,
+            "numero": 5
+          },
+          {
+            "disponible": null,
+            "asientos": 4,
+            "numero": 6
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 3
+          }
+        ],
+        [
+          {
+            "disponible": true,
+            "asientos": 2,
+            "numero": 7
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 8
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 9
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 3
+          }
+        ],
+        [
+          {
+            "disponible": true,
+            "asientos": 2,
+            "numero": 7
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 8
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 9
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 3
+          }
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "mesas": [
+        [
+          {
+            "disponible": true,
+            "asientos": 3,
+            "numero": 1
+          },
+          {
+            "disponible": null
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 2
+          }
+        ],
+        [
+          {
+            "disponible": true,
+            "asientos": 2,
+            "numero": 3
+          },
+          {
+            "disponible": false,
+            "asientos": 4,
+            "numero": 4
+          },
+          {
+            "disponible": null,
+            "asientos": 4,
+            "numero": 5
+          }
+        ],
+        [
+          {
+            "disponible": true,
+            "asientos": 2,
+            "numero": 5
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 6
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 7
+          }
+        ],
+        [
+          {
+            "disponible": true,
+            "asientos": 2,
+            "numero": 8
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 9
+          },
+          {
+            "disponible": true,
+            "asientos": 4,
+            "numero": 10
+          }
+        ]
+      ]
+    }
+  ]
 }

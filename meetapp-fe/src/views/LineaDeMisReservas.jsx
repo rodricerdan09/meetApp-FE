@@ -14,8 +14,11 @@ const LineaDeMisReservas = ({nombre,fecha, hora, estado, autotest=false}) => {
                 <td>{hora}</td>
                 <td>{estado}</td>
                 <td>
-                <button className={autotest? "btn btn-primary" :"btn btn-primary disabled"} type="button">
-                    Completar
+                <button title="completar el autoste para asistir al local" className={autotest? "btn btn-sm btn-info" :"btn btn-sm btn-info disabled"} type="button">
+                    <span className="icon text-white-50">
+                        <i className="fas fa-info-circle"/>
+                    </span>
+                    <span className="text"> Completar</span>
                 </button>
                 </td>
             </tr>   

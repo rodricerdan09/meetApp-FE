@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import LineaDeMisReservas from "./LineaDeMisReservas";
-import Reservar from "./reservar/Reservar";
+//import Reservar from "./reservar/Reservar";
 const MisReservas = () => {
   const [search, setSearch] = useState("");
   const [reservas, setReservas] = useState( 

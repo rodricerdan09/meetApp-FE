@@ -30,8 +30,7 @@ const Routes = () => {
           component={Perfil}
         />
        <ProtectedRoute
-          exact
-          path="/reservar/:local/mesas/piso/:piso"
+          path="/local/:local/fecha/:fecha/hora/:hora/mesas"
           component={Mesas}
         /> 
         <ProtectedRoute

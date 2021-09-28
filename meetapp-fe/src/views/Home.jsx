@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+
 const Home = () => {
+
     return (
         <div>
             <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
@@ -10,7 +12,7 @@ const Home = () => {
                         <h1 className="display-4 font-weight-normal text-primary"><b>MeetApp</b></h1>
                     </div>
                     
-                    <p className="lead font-weight-normal">MeetApp te permite reservar tu espacio en bares y restaurantes preferidos para compartir con las persomas que prefieras </p>
+                    <p className="lead font-weight-normal">MeetApp te permite reservar tu espacio en bares y restaurantes preferidos para compartir con las personas que prefieras </p>
                     <Link className="btn btn-outline-primary" to="/mis-reservas">Comenzar a usar MeetApp</Link>
                 </div>
             </div>
