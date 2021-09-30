@@ -18,9 +18,10 @@ const Reservar = () => {
   const later = moment();
   let date= now.format('YYYY-MM-DD');
   let maxDate=later.add(1, 'months').format('YYYY-MM-DD');
-  let hour=now.format('HH:mm')
+  let hour=now.format('HH:00')
+  console.log(hour);
   const [fecha, setFecha] = useState(date);
-  const [hora, setHora] = useState(hour);
+  const [hora, setHora] = useState("20:00");
   const [search, setSearch] = useState("");
   const [categoria, setCategoria] = useState("");
   const [locales, setLocales] = useState( 
@@ -29,7 +30,7 @@ const Reservar = () => {
       status: false
     })
   const cargarLocales = () => {
-      let url = `http://localhost:5000/api/disponibilidad/${fecha}`;
+      let url = `http://localhost:5000/api/disponibilidad/${fecha}/${hora}`;
       axios.get(
         url
       )
@@ -42,7 +43,7 @@ const Reservar = () => {
   }
   useEffect (() => {
     cargarLocales();
-  }, [fecha]);
+  }, [fecha, hora]);
 
 
   const localesFiltrados = locales.locales.filter((local) =>
@@ -63,7 +64,7 @@ const Reservar = () => {
           <div className="row">
             <div className="col-md-6 text-center">
               <label style={{ margin: "0px", width: "180px" }}>
-                <strong>Ingrese día a reservar</strong>
+                <strong> Día de la reserva</strong>
               </label>
               <input 
                 title="elije un día para la reserva"
@@ -76,17 +77,92 @@ const Reservar = () => {
             </div>
             <div className="col-md-6 text-center">
               <label style={{ width: "180px" }}>
-                <strong>Ingrese hora a reservar</strong>
+                <strong>Horario de la reserva</strong>
               </label>
-              <input 
-                type="time" 
-                defaultValue={hora}
-                step={3600}
-                name="time" 
-                title="elije una hora para la reserva"
-                onChange={e=>setHora(e.target.value)}
-              />
+                <i className="fa fa-clock " 
+                  style={
+                    {
+                      "borderStyle": "groove", "borderRadius": "3px",  
+                      "height": "30px", border: "8px  #FFFFF", "paddingTop": "4px", "paddingLeft":"3px"
+                    }
+                  }
+                >
+                &nbsp;
+                &nbsp;
+                <select 
+                  onChange={e=>setHora(e.target.value)}
+                  value={"20:00"}
+                  title="seleccione un horario para reservar"
+                  style={{"border": 0, "outline": 0, "backgroundColor": "transparent", "-webkit-appearance":"none", "appearance":"none"}}
+                >
+                
+                <optgroup>
+                  <option 
+                    value={"10:00"} 
+                  >
+                  10:00 &nbsp;
+                  </option>
+                  <option 
+                    value={"11:00"} 
+                  >
+                    11:00 
+                  </option>
+                  <option 
+                  value={"12:00"} 
+                  >
+                    12:00
+                  </option>
+                  <option 
+                  value={"13:00"} 
+                  >
+                    13:00
+                  </option>
+                  <option 
+                  value={"14:00"} 
+                  >
+                    14:00
+                  </option>
+                  <option 
+                  value={"15:00"} 
+                  >
+                    15:00
+                  </option>
+                  <option 
+                  value={"18:00"} 
+                  >
+                    18:00
+                  </option>
+                  <option 
+                  value={"19:00"} 
+                  >
+                    19:00
+                  </option>
+                  <option 
+                  value={"20:00"} 
+                  >
+                    20:00
+                  </option>
+                  <option 
+                  value={"21:00"} 
+                  >
+                    21:00
+                  </option>
+                  <option 
+                  value={"22:00"} 
+                  >
+                    22:00
+                  </option>
+                  <option 
+                  value={"23:00"} 
+                  >
+                    23:00
+                  </option>
+                </optgroup>
+
+                </select>
+                </i>
             </div>
+            
           </div>
         </div>
       </div>
@@ -142,7 +218,7 @@ const Reservar = () => {
                       restaurante
                     </option>
                     <option 
-                      value={"cafetería"}
+                      value={"cafeteria"}
                     >
                       cafetería
                     </option>

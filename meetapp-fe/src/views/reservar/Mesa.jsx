@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Mesa = ({disponible=null, asientos, numero,handleChecked}) => {
+const Mesa = ({disponible=null, asientos,id, numero,handleChecked}) => {
     return (
         <td>
         {disponible?
@@ -8,7 +8,7 @@ const Mesa = ({disponible=null, asientos, numero,handleChecked}) => {
                 className="btn btn-info btn-md"
                 title={`Reservar Mesa ${numero}`}
                 >
-                <input type="checkbox" id={numero} name={numero} className={asientos} onChange={handleChecked}/>
+                <input type="checkbox" id={id} name={numero} className={asientos} onChange={handleChecked}/>
                 <font color="black" size={4}>
                     <strong>{" "+numero}</strong>
                 </font>

@@ -50,6 +50,7 @@ const LineaDeReserva = ({local,categoria, direccion, porcentajeOcupado, url,fech
                         :"btn btn-secondary btn-sm disabled" 
                     }
                     onClick={e=>history.push(`local/${local}/fecha/${fecha}/hora/${hora}/mesas/`)}
+                    disabled={ porcentajeOcupado !==100 ? false: true}
                 >
                     <span className="icon text-white-10">
                         <i className="fas fa-arrow-right"/>

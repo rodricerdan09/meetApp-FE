@@ -30,7 +30,7 @@ const Mesas = () => {
       }
     );
     //
-    let url = `http://localhost:5000/api/local/${local}/piso/${piso}/mesas/`;
+    let url = `http://localhost:5000/api/local/${local}/piso/${piso}/mesas/fecha/${fecha}/hora/${hora}`;
     axios.get(url)
     .then(res => 
       setMesas(
@@ -42,7 +42,7 @@ const Mesas = () => {
     );
   }
   useEffect (_=> cargarReservas(piso), [piso] );
-
+  console.log(mesas,"jdkjdkdjkdjkkkkkkkkkk")
   const obtenerPisos = () => {
   let urlPisos = `http://localhost:5000/api/cantidad-de-pisos/local/${local}/  `;
     axios.get(urlPisos)
@@ -104,6 +104,7 @@ const Mesas = () => {
           <Mesa
             disponible={mesas[i][j].disponible}
             asientos={mesas[i][j].capacidad}
+            id={mesas[i][j].id}
             numero={mesas[i][j].numero}
             handleChecked={handleChecked}
           />
@@ -137,14 +138,14 @@ const Mesas = () => {
   } 
   const handleChecked=(event)=>{
     //console.log("checked")
-    let {name, className, checked} = event.target;
+    let {id, className, checked} = event.target;
     if (!checked)
-        delete form[name]
+        delete form[id]
     else
       setForm(
         {
           ...form,
-          [name]:className,
+          [id]:className,
         }
       )
   }
@@ -153,7 +154,7 @@ const Mesas = () => {
     //alert(`Reserva hecha para ${local} en el piso ${piso}, fecha ${fecha},hora ${hora}, cantidad de acompañantes ${acompaniantes}`)
     //alert(JSON.stringify({local, piso, fecha, hora, acompaniantes, ...form}))
     
-    console.log(Object.entries(form))
+    
     let asistentes=acompaniantes+1;
     let asistentes2=acompaniantes+1;
     console.log(acompaniantes,"fhjfhfjh")
@@ -194,7 +195,6 @@ const Mesas = () => {
       return
     }
     if(cantidadDesillas < asistentes2){
-      alert("hkdhkdhk")
       MySwal2.fire(
         {
           title: `Selecciona más mesas para reservar`,
@@ -242,18 +242,25 @@ const Mesas = () => {
             reverseButtons: false,
           }
         );
-        // axios.post(`http://localhost:5000/api/reservas`, { "id":uniqid(), "nombre":local,
-        // "estado": "Pendiente",
-        // "fecha":fecha,
-        // "hora":hora,
-        // "autotest":false })
-        //   .then(res => {
-        //     console.log(res);
-        //     console.log(res.data);
-        //   }).catch(e => {
-        //     console.log(e);
-        // })
-        // history.push('/mis-reservas')
+
+        
+        let idMesasReservadas=Object.keys(form);
+        let mesas_reservas=idMesasReservadas.map(mesaId=>{return{mesaId}})
+        axios.post(`http://localhost:5000/api/reservas`, {
+          fecha,
+          hora,
+          cantidad_reservada:asistentes2,
+          estadoId:1,
+          comensaleId:1,
+          mesas_reservas
+       })
+          .then(res => {
+            console.log(res);
+            console.log(res.data);
+          }).catch(e => {
+            console.log(e);
+        })
+        history.push('/mis-reservas');
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel

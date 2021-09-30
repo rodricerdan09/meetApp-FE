@@ -12,8 +12,13 @@ const MisReservas = () => {
       status: false
     })
 
+    //{ "id":uniqid(), "nombre":local,
+        // "estado": "Pendiente",
+        // "fecha":fecha,
+        // "hora":hora,
+        // "autotest":false }
   const cargarReservas = () => {
-    var url = "http://localhost:5000/api/reservas/";
+    var url = "http://localhost:5000/api/reservas";
     axios.get(url).then(res => {
         setReservas({
           reservas: res.data,
@@ -24,10 +29,10 @@ const MisReservas = () => {
   useEffect (() => {
     cargarReservas();
   }, []);
-
+  console.log(reservas.reservas)
 
   const reservasFiltradas = reservas.reservas.filter((reserva) =>
-    reserva.nombre.toLowerCase().includes(search.toLowerCase())|
+    reserva.local.toLowerCase().includes(search.toLowerCase())|
     reserva.fecha.toLowerCase().includes(search.toLowerCase())|
     reserva.hora.toLowerCase().includes(search.toLowerCase())|
     reserva.estado.toLowerCase().includes(search.toLowerCase())
@@ -71,7 +76,7 @@ const MisReservas = () => {
                     type="search"
                     className="form-control form-control-sm"
                     aria-controls="dataTable"
-                    placeholder="Buscar en reservas"
+                    placeholder="🔎 Buscar en reservas"
                     autoFocus
                     onChange={(e) => setSearch(e.target.value)}
                   />
@@ -92,23 +97,30 @@ const MisReservas = () => {
                   <th>Fecha</th>
                   <th>Hora</th>
                   <th>Estado</th>
+                  <th>Detalles</th>
                   <th>Auto-test</th>
+                  <th>Cancelar</th>
                 </tr>
               </thead>
               <tbody>
                 
-                {reservasFiltradas.map(reserva =>
-                    <LineaDeMisReservas 
-                      key={reserva.id}
-                      nombre={reserva.nombre} 
-                      fecha={reserva.fecha} 
-                      hora={reserva.hora}
-                      estado={reserva.estado} 
-                      autotest={reserva.autotest} 
-                    />)}
+                {
+                  reservasFiltradas
+                    .map(reserva =>
+                      <LineaDeMisReservas 
+                        key={reserva.id}
+                        nombre={reserva.local} 
+                        fecha={reserva.fecha} 
+                        hora={reserva.hora}
+                        estado={reserva.estado} 
+                        autotest={false} 
+                      />
+                  )
+                }
               </tbody>
               <tfoot>
               <tr>
+                  <td />
                   <td />
                   <td />
                   <td />
